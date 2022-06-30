@@ -1,24 +1,33 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
-header {
+.header-logo-btn {
   display: flex;
   display: inline-block;
+  vertical-align: middle;
 }
 
-.header-buttons {
-  display: flex;
-  display: inline-block;
-  
-}
-.categories label {
-  margin-left: 10px;
+.logo {
+  /* font-family: 'Pacifico', cursive; */
+  /* font-family: 'Sacramento', cursive; */
+  /* font-family: 'Satisfy', cursive; */
+  /* font-family: 'Tangerine', cursive; */
+  font-family: 'The Nautigal', cursive;
+  text-align: left;
 }
 
-.categories button {
+header button {
+  text-align: justify;
+  border: none;
+}
+
+.products-btn {
   border: none;
   background-color: white;
+  cursor: pointer;
+  text-decoration: underline;
+  color: black;
 }
 
 .header-btn {
@@ -28,17 +37,51 @@ header {
   border: none;
 }
 
-.login-btn {
+.login-btn,
+.signup-btn {
   background-color: white;
   cursor: pointer;
   display: inline-block;
+  text-decoration: none;
+  color: black;
 }
 
-.signup-btn:hover {
+.signup-btn:hover,
+.login-btn:hover,
+.category-btn:hover {
+  background-color: rgb(240, 238, 223);
+}
+
+.signup-btn:active,
+.login-btn:active,
+.category-btn:active {
+  background-color: rgb(236, 229, 192);
+  transform: translateY(2px);
+}
+
+#carouselExampleCaptions {
+  text-align: center;
+}
+
+.carousel-slide img {
+  width: 700px;
+  height: 400px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.about-us,
+.contact {
+  margin-right: 50px;
+}
+
+.about-us,
+.contact,
+.delivery {
   background-color: white;
-}
-
-.signup-btn:active {
-  background-color: rgb(126, 126, 126);
-  transform: translateY(3px);
+  cursor: pointer;
+  display: inline-block;
 }

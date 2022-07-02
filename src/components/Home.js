@@ -1,15 +1,11 @@
-import carousel_1 from '../images/carousel_1.jpg'
-import carousel_2 from '../images/carousel_2.jpg'
-import carousel_3 from '../images/carousel_3.jpg'
-import SignUp from './SignUp';
-import { Routes, Route, Link } from 'react-router-dom'
-import Login from './Login';
-import Product from './AddProduct';
+import React, { useEffect, useState } from "react"
+import Product from "./Product"
 
-function Home({ name }) {
+function Home() {
+
     return (
-        <div>
-            <h1>Welcome {name}!</h1>
+        <div className="row center">
+            <Product />
         </div>
     )
 }

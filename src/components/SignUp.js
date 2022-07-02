@@ -5,6 +5,8 @@ import { checkPass } from '../helper/checkPass'
 import { Routes, Route, Link } from 'react-router-dom'
 import Login from './Login'
 import Home from './Home'
+import Product from './Product'
+
 
 function SignUp() {
     const [password, setPassword] = useState("")
@@ -28,15 +30,6 @@ function SignUp() {
 
     return (
         <div>
-            <header>
-                <div>
-                    <Link to='/'>Home page</Link>
-                </div>
-
-                <Routes>
-                    <Route path='/' element={<Home />}></Route>
-                </Routes>
-            </header>
             <div className='password-checker'>
                 <form action="">
                     <label htmlFor="">Email: </label>
@@ -57,9 +50,8 @@ function SignUp() {
                 <Routes>
                     <Route path='/login' element={<Login />}></Route>
                 </Routes>
-
-
             </div>
+            <header className='header-home'></header>
         </div>
     )
 }

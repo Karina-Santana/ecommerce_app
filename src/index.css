@@ -1,0 +1,147 @@
+html {
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-size: 18px;
+    font-family: Helvetica, sans-serif, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* #root id is in the index.html file */
+#root {
+    height: 100%;
+}
+
+/* Layout */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    height: 100%;
+}
+
+/* 'grid-area: header' below is refering to the header above*/
+header {
+    grid-area: header;
+    background-color: rgb(236, 156, 145);
+}
+
+main {
+    grid-area: main;
+    padding: 1rem;
+    margin-bottom: 40px;
+}
+
+footer {
+    grid-area: footer;
+    background-color: rgb(236, 156, 145);
+    color: white;
+}
+
+footer a {
+    color: white;
+}
+
+/* Common */
+h1 {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+}
+
+h2 {
+    font-size: 1.6rem;
+    padding: 8px 0px 15px 0px;
+    color: rgb(52, 52, 52);
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}
+
+/* Header */
+
+header a {
+    color: white;
+    padding: 1rem;
+}
+
+a.brand {
+    color: white;
+    font-size: 33px;
+    font-weight: bold;
+    font-family: 'The Nautigal', cursive;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row.center {
+    justify-content: center;
+}
+
+.row.top {
+    align-items: flex-start;
+}
+
+/* image */
+img {
+    border-radius: 0.5rem;
+}
+
+img.medium {
+    max-width: 300px;
+    width: 100%;
+}
+
+/* card */
+.card {
+
+    background-color: rgb(240, 240, 240);
+    border-radius: 0.5rem;
+    margin: 1rem;
+    text-align: center;
+    /* max-height: 400px; */
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+/* >* mean that all children of .card-body should have the bellow styles:*/
+.card-body>* {
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+/* rating */
+.rating span {
+    color: black;
+    margin: 4px;
+}
+
+.rating span:last-child {
+    color: gray;
+}

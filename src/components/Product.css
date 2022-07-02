@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 1rem;
+}
+
+.Products {
+    text-align: center;
+}
+
+.Product img {
+    width: 100px;
+}

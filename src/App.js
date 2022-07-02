@@ -23,8 +23,10 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path='/product/:id' element={<ProductDetails />} exact></Route>
+          <Route exact path='/product/:id' element={<ProductDetails />}></Route>
+          {/* <Route path='/product/:id' element={<ProductDetails />} exact></Route> */}
           {/* the 'exact' word is making sure that the element Home in the route will run only if the url is '/'  */}
+          {/* <Route path='/product/:id' onClick={<ProductDetails handleClick={handleClick} />} exact></Route> */}
           <Route path='/' element={<Home />} exact></Route>
         </Routes>
       </main>

@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 0 0px;
     height: 100vh;
     font-size: 18px;
     font-family: Helvetica, sans-serif, sans-serif;
@@ -96,6 +96,7 @@ a.brand {
 
 .row.center {
     justify-content: center;
+    gap: 15px;
 }
 
 .row.top {
@@ -108,14 +109,14 @@ img {
 }
 
 img.medium {
-    max-width: 300px;
+    max-width: 330px;
     width: 100%;
 }
 
 /* card */
 .card {
 
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(245, 245, 245);
     border-radius: 0.5rem;
     margin: 1rem;
     text-align: center;

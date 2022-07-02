@@ -68,6 +68,5 @@ function ProductDetails(props) {
         </div>
     </div>
 }
-hahahahha
 
 export default ProductDetails

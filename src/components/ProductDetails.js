@@ -1,23 +1,31 @@
 import { useState, useEffect } from 'react'
-import ProductById from './ProductInfo'
 import Rating from './Rating'
 import useParams from 'react'
-
-
 import { Routes, Route, Link } from 'react-router-dom'
 
 
-function ProductDetails() {
+function ProductDetails(props) {
+    // var url = window.location.pathname;
+    // var id = url.substring(url.lastIndexOf('/') + 1);
 
-    // const id = this.props.match.params.id;
+    const productUrl = window.location.href
+    // console.log(productUrl)
+    const arrProductUrl = productUrl.split('')
+    // console.log(arrProductUrl)
+    const productId = arrProductUrl[arrProductUrl.length - 1]
+    // console.log(productId)
 
-    // console.log("VALUE OF PROPS: " + JSON.stringify(query.id))
+    // const id = product((x) => x.id === props.match.params.id)
+    // console.log("VALUE OF PROPS: " + JSON.stringify(id))
     // const [clickedProduct, setClickedProduct] = useState([])
     const [product, setProduct] = useState([])
-    console.log(product)
+    const [qty, setQty] = useState(1)
 
-    function getProduct() {
-        fetch(`/api/products/`)
+    getProduct(productId)
+
+
+    function getProduct(productId) {
+        fetch(`/api/products/${productId}`)
             .then(res => res.json())
             .then(res => setProduct(res))
     }
@@ -25,115 +33,75 @@ function ProductDetails() {
     useEffect(getProduct, [])
 
 
-    // const handleClick = event => {
-    //     let productId = event.target.id
-    //     console.log(productId)
-    // };
-    // const navigate = useNavigate()
-    // function handleClick(event) {
-    //     event.preventDefault();
-    //     const productArray = event.target.id.split('-')
-    //     console.log(event.target)
-    //     const productObj = {
-    //         id: productArray[0],
-    //         title: productArray[1],
-    //         image: productArray[2],
-    //         rating: productArray[3],
-    //         numReviews: productArray[4],
-    //         price: productArray[5],
-    //         countInStock: productArray[6],
-    //         category: productArray[7]
-    //     }
-    //     setClickedProduct(productObj)
-    //     navigate('/product-info')
-    // }
-
-
-
-    return (
-        <div>
-            {
-                product.map((row, index) => (
-                    <ProductById
-                        key={index}
-                        title={row.title}
-                        price={row.price}
-                        image={row.image}
-                        rating={row.rating}
-                        numReviews={row.numReviews}
-                        countInStock={row.countInStock}
-                    />
-                ))
-            }
+    // console.log(product)
+    if (!product) {
+        return <div>Product Not Found</div>
+    }
+    const addToCartHandler = () => {
+        props.history.push(`/cart/${productId}?qty=${qty}`)
+    }
+    return <div>
+        <Link to='/'>Go Back</Link>
+        <div className="row top">
+            <div className="col-2">
+                <img className="large" src={product.image} alt={product.title} />
+            </div>
+            <div className="col-1">
+                <ul>
+                    <li>
+                        <h1>{product.title}</h1>
+                    </li>
+                    <li>
+                        <Rating rating={product.rating} numReviews={product.numReviews} />
+                    </li>
+                    <li>Price: ${product.price}</li>
+                </ul>
+            </div>
+            <div className="col-1">
+                <div className="card card-body">
+                    <ul>
+                        <li>
+                            <div className="row">
+                                <div>Price</div>
+                                <div className="price">${product.price}</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="row">
+                                <div>Status</div>
+                                <div>{product.countInStock > 0 ? <span className="success">In Stock</span> : <span className="error">Unavailable</span>}</div>
+                            </div>
+                        </li>
+                        {
+                            product.countInStock > 0 && (
+                                <>
+                                    <li>
+                                        <div className='row'>
+                                            <div>Qtd</div>
+                                            <div>
+                                                <select
+                                                    value={qty}
+                                                    onChange={(e) => setQty(e.target.value)}>
+                                                    {[...Array(product.countInStock).keys()].map((x) => (
+                                                        <option key={x + 1} value={x + 1}>
+                                                            {x + 1}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <button onClick={addToCartHandler} className="primary block">Add to Cart</button>
+                                    </li>
+                                </>
+                            )
+                        }
+                    </ul>
+                </div>
+            </div>
         </div>
-
-
-        // <ProductById
-        //     product={product}
-        // // handleClick={handleClick}
-        // />
-    );
-
-
-
-    // console.log("PRODUCT: " + product)
-    //console.log(products[0].id)
-    // const info = ''
-    // for (let i = 0; i < products.length; i++) {
-    //     if (products[i].id === props.id) {
-    //         info = `Title: ${products[i].title}, Price: ${products[i].price}`
-    //         console.log(info)
-    //     }
-    // }
-    // return (
-    //     <ProductById
-    //         props={props}
-    //     />
-    // )
-
-    // if (!product) {
-    //     return <div>Product Not Found</div>
-    // }
-    // return <div>
-    //     <Link to='/'>Back to Home Page</Link>
-    //     <div className="row top">
-    //         <div className="col-2">
-    //             <img className="large" src={product.image} alt={product.title} />
-    //         </div>
-    //         <div className="col-1">
-    //             <ul>
-    //                 <li>
-    //                     <h1>{product.title}</h1>
-    //                 </li>
-    //                 <li>
-    //                     <Rating rating={product.rating} numReviews={product.numReviews} />
-    //                 </li>
-    //                 <li>Price: ${product.price}</li>
-    //             </ul>
-    //         </div>
-    //         <div className="col-1">
-    //             <div className="card card-body">
-    //                 <ul>
-    //                     <li>
-    //                         <div className="row">
-    //                             <div>Price</div>
-    //                             <div className="price">${product.price}</div>
-    //                         </div>
-    //                     </li>
-    //                     <li>
-    //                         <div className="row">
-    //                             <div>Status</div>
-    //                             <div>{product.countInStock > 0 ? <span className="success">In Stock</span> : <span className="error">Unavailable</span>}</div>
-    //                         </div>
-    //                     </li>
-    //                     <li>
-    //                         <button className="primary block">Add to Cart</button>
-    //                     </li>
-    //                 </ul>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
-    // }
+    </div>
 }
+
 export default ProductDetails

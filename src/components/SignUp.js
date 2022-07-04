@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
 import PasswordChecker from './PasswordChecker'
-import { checkPass } from '../helper/checkPass'
 import { Routes, Route, Link } from 'react-router-dom'
-import Login from './Login'
-import Home from './Home'
-import Product from './Product'
 
 
+function SignUp() {
 
-
-function SignUp({ user, setUser, submitSignUp }) {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [inputType, setInputType] = useState('password')
+
+    const handleName = event => {
+        setName(event.target.value)
+    }
+
+    const handleEmail = event => {
+        setEmail(event.target.value)
+    }
 
     const handlePassword = event => {
         let enteredPassword = event.target.value
@@ -30,19 +35,28 @@ function SignUp({ user, setUser, submitSignUp }) {
         }
     }
 
+    const handleSubmit = event => {
+        event.preventDefaul()
+        fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+        }).then(res => console.log(res))
+    }
+
     return (
         <div>
             <div className='password-checker'>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="">Name: </label>
                     <input
-                        type="text"
-                        name="name"
+                        type='text'
+                        name='name'
                         id="name"
                         required
-                        className="form-control"
-                        onChange={event => setUser({ ...user, name: event.target.value })}
+                        onChange={handleName}
                     />
+
                     <label htmlFor="">Email: </label>
                     <input
                         type="text"
@@ -50,26 +64,24 @@ function SignUp({ user, setUser, submitSignUp }) {
                         id="email"
                         label="Email:"
                         required
-                        onChange={event => setUser({ ...user, email: event.target.value })}
+                        onChange={handleEmail}
                     />
+
+
                     <label htmlFor="">Password: </label>
                     <PasswordChecker
                         password={password}
                         id="password"
-                        handlePassword={handlePassword}
                         showPassword={showPassword}
+                        handlePassword={handlePassword}
                         inputType={inputType}
-                        onChange={event => setUser({ ...user, password: event.target.value })}
+                        onChange={handlePassword}
                     />
-                    <button type='submit'>Save2</button>
+                    <button>Sign Up</button>
                 </form>
 
                 <nav>
-                    <Link to='/login' className="signup-save-btn">Save</Link>
-                    <Routes>
-
-                    </Routes>
-
+                    <Link to='/login' onChange={() => handleSubmit()} className="signup-save-btn">Save</Link>
                 </nav>
             </div>
         </div>

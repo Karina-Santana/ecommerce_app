@@ -37,8 +37,9 @@ function ProductDetails(props) {
                     <li>
                         <h1>{product.title}</h1>
                     </li>
+                    <li>Description: {product.description}</li>
                     <li>
-                        <Rating rating={product.rating} numReviews={product.numReviews} />
+                        <Rating rating={product.rating} num_reviews={product.num_reviews} />
                     </li>
                     <li>Price: ${product.price}</li>
                 </ul>
@@ -55,11 +56,11 @@ function ProductDetails(props) {
                         <li>
                             <div className="row">
                                 <div>Status</div>
-                                <div>{product.countInStock > 0 ? <span className="success">In Stock</span> : <span className="error">Unavailable</span>}</div>
+                                <div>{product.count_in_stock > 0 ? <span className="success">In Stock</span> : <span className="error">Unavailable</span>}</div>
                             </div>
                         </li>
                         {
-                            product.countInStock > 0 && (
+                            product.count_in_stock > 0 && (
                                 <>
                                     <li>
                                         <div className='row'>
@@ -68,7 +69,7 @@ function ProductDetails(props) {
                                                 <select
                                                     value={qty}
                                                     onChange={(e) => setQty(e.target.value)}>
-                                                    {[...Array(product.countInStock).keys()].map((x) => (
+                                                    {[...Array(product.count_in_stock).keys()].map((x) => (
                                                         <option key={x + 1} value={x + 1}>
                                                             {x + 1}
                                                         </option>

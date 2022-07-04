@@ -1,42 +1,54 @@
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 function Login(event) {
-    event.preventDefault();
-    const navigate = useNavigate()
-    const [login, setLogin] = useState('')
+    let navigate = useNavigate()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    // const [login, setLogin] = useState("")
     const [isLogged, setIsLogged] = useState(false)
-    console.log(login)
-    if (login !== null) {
+
+    const handleEmail = event => {
+        setEmail(event.target.value)
+    }
+
+    const handlePassword = event => {
+        let enteredPassword = event.target.value
+        setPassword(enteredPassword)
+    }
+
+    const handleLogin = event => {
+        event.preventDefault()
+        const data = { email, password }
+        console.log(data)
         fetch('/api/sessions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(login)
+            body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(user => {
-                setLogin(user)
-            })
+            .then(res => setIsLogged(true))
+            .then(() => navigate("/", { replace: true }))
     }
-    const isLoggedIn = true
-    setIsLogged(isLoggedIn)
-    navigate('/')
 
     return (
         <div>
-            <label htmlFor="">Email: </label>
-            <input type="text" />
-            <label htmlFor="">Password: </label>
-            <input type="password" />
-            <button>Log in</button>
-            <Link to='/signup' variant="body2">
-                {"Are you not registered yet? Sign Up!"}
-            </Link>
-        </div>
 
+            <form onChange={handleEmail}>
+                <label htmlFor="">Email: </label>
+                <input type="text" required />
+            </form>
+
+            <form onChange={handlePassword}>
+                <label htmlFor="">Password: </label>
+                <input type="password" required />
+            </form>
+
+            <button type='submit' onClick={handleLogin}>Log In</button>
+            <p>Are you not registered yet? <a href="/signup">Click Here To Sign Up</a></p>
+
+        </div>
     )
 }
-
 
 export default Login

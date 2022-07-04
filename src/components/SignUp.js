@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
 import PasswordChecker from './PasswordChecker'
-import { Routes, Route, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 function SignUp() {
-
+    let navigate = useNavigate()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -21,7 +21,6 @@ function SignUp() {
 
     const handlePassword = event => {
         let enteredPassword = event.target.value
-
         setPassword(enteredPassword)
     }
 
@@ -36,12 +35,16 @@ function SignUp() {
     }
 
     const handleSubmit = event => {
-        event.preventDefaul()
+        event.preventDefault()
+        const data = { name, email, password }
+        console.log(data)
         fetch('/api/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password })
-        }).then(res => console.log(res))
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(res => navigate("/login", { replace: true }))
     }
 
     return (
@@ -67,7 +70,6 @@ function SignUp() {
                         onChange={handleEmail}
                     />
 
-
                     <label htmlFor="">Password: </label>
                     <PasswordChecker
                         password={password}
@@ -77,12 +79,9 @@ function SignUp() {
                         inputType={inputType}
                         onChange={handlePassword}
                     />
-                    <button>Sign Up</button>
+                    <button type='submit'>Sign Up</button>
                 </form>
-
-                <nav>
-                    <Link to='/login' onChange={() => handleSubmit()} className="signup-save-btn">Save</Link>
-                </nav>
+                <p>Already have an account? <a href="/login">Click Here To Log In</a></p>
             </div>
         </div>
     )

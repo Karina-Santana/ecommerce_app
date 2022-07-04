@@ -14,7 +14,7 @@ function AllProducts({ allProducts }) {
                                 <a href={`products/${product.id}`}>
                                     <h2>{product.title}</h2>
                                 </a>
-                                <Rating rating={product.rating} numReviews={product.numReviews} />
+                                <Rating rating={product.rating} num_reviews={product.num_reviews} />
                                 <div className="price">${product.price}</div>
                             </div>
                         </div>

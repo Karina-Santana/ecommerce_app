@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from 'react'
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './components/Home';
@@ -7,9 +7,11 @@ import Cart from './components/Cart';
 // import AddProduct from './components/AddProduct'
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import isLogged from './components/Login'
+import LogOut from './components/LogOut';
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false)
+
   if (isLogged === true) {
     return (
       <>
@@ -20,7 +22,7 @@ function App() {
             </div>
             <div>
               <a href="/cart">My Cart</a>
-              <Link to="/logout">Log Out</Link>
+              <a href="/">Log Out</a>
             </div>
           </header>
           <main>
@@ -28,11 +30,8 @@ function App() {
               {/* ? is used to not allow to add more product in the cart */}
               <Route path='/cart/:id?' element={<Cart />}></Route>
               <Route path='/products/:id' element={<ProductDetails />}></Route>
-              {/* the 'exact' word is making sure that the element Home in the route will run only if the url is '/'  */}
-              {/* <Route path='/products/:id' onClick={<ProductDetails handleClick={handleClick} />} exact></Route> */}
               <Route path='/' element={<Home />} exact></Route>
-              <Route path="/signup" element={<SignUp />} exact></Route>
-              <Route path="login" element={<Login />}></Route>
+              <Route path="logout" element={<LogOut />}></Route>
             </Routes>
           </main>
           <footer className="row center">
@@ -63,7 +62,7 @@ function App() {
               {/* <Route path='/products/:id' onClick={<ProductDetails handleClick={handleClick} />} exact></Route> */}
               <Route path='/' element={<Home />} exact></Route>
               <Route path="/signup" element={<SignUp />} exact></Route>
-              <Route path="login" element={<Login />}></Route>
+              <Route path="login" element={<Login setIsLogged={setIsLogged} />}></Route>
             </Routes>
           </main>
           <footer className="row center">

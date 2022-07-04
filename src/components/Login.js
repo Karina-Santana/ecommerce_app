@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Login(event) {
+
+function Login({ setIsLogged }) {
     let navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     // const [login, setLogin] = useState("")
-    const [isLogged, setIsLogged] = useState(false)
+
 
     const handleEmail = event => {
         setEmail(event.target.value)
@@ -33,7 +34,6 @@ function Login(event) {
 
     return (
         <div>
-
             <form onChange={handleEmail}>
                 <label htmlFor="">Email: </label>
                 <input type="text" required />

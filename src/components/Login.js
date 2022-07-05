@@ -32,7 +32,7 @@ function Login({ setIsLogged }) {
 
     return (
         <div>
-            <form onChange={handleEmail}>
+            <form className='login-email' onChange={handleEmail}>
                 <label htmlFor="">Email: </label>
                 <input type="text" required />
             </form>
@@ -42,7 +42,7 @@ function Login({ setIsLogged }) {
                 <input type="password" required />
             </form>
 
-            <button type='submit' onClick={handleLogin}>Log In</button>
+            <button className='login-btn' type='submit' onClick={handleLogin}>Log In</button>
             <p>Are you not registered yet? <a href="/signup">Click Here To Sign Up</a></p>
 
         </div>

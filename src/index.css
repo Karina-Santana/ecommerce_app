@@ -203,3 +203,28 @@ img.large {
 .rating span:last-child {
     color: gray;
 }
+
+.strengthen-password {
+    font-size: 14px;
+    color: rgb(75, 75, 75);
+    font-style: italic;
+}
+
+.signup-btn,
+.login-btn {
+    margin-top: 20px;
+}
+
+.password-checker {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup-email,
+.login-email {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

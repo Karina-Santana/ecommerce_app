@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Rating from './Rating'
 
 function AllProducts({ allProducts }) {
+
     return (
         <>
             {
@@ -25,6 +26,7 @@ function AllProducts({ allProducts }) {
         </>
     )
 }
+
 
 
 export default AllProducts

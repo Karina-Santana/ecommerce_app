@@ -51,37 +51,44 @@ function SignUp() {
         <div>
             <div className='password-checker'>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="">Name: </label>
-                    <input
-                        type='text'
-                        name='name'
-                        id="name"
-                        required
-                        onChange={handleName}
-                    />
+                    <div>
+                        <label htmlFor="">Name: </label>
+                        <input
+                            type='text'
+                            name='name'
+                            id="name"
+                            required
+                            onChange={handleName}
+                        />
+                    </div>
 
-                    <label htmlFor="">Email: </label>
-                    <input
-                        type="text"
-                        name="email"
-                        id="email"
-                        label="Email:"
-                        required
-                        onChange={handleEmail}
-                    />
+                    <div className='signup-email'>
+                        <label htmlFor="">Email: </label>
+                        <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            label="Email:"
+                            required
+                            onChange={handleEmail}
+                        />
+                    </div>
 
-                    <label htmlFor="">Password: </label>
-                    <PasswordChecker
-                        password={password}
-                        id="password"
-                        showPassword={showPassword}
-                        handlePassword={handlePassword}
-                        inputType={inputType}
-                        onChange={handlePassword}
-                    />
-                    <button type='submit'>Sign Up</button>
+                    <div>
+                        <label htmlFor="">Password: </label>
+                        <PasswordChecker
+                            password={password}
+                            id="password"
+                            showPassword={showPassword}
+                            handlePassword={handlePassword}
+                            inputType={inputType}
+                            onChange={handlePassword}
+                        />
+                    </div>
+
+                    <button className='signup-btn' type='submit'>Sign Up</button>
+                    <p>Already have an account? <a href="/login">Click Here To Log In</a></p>
                 </form>
-                <p>Already have an account? <a href="/login">Click Here To Log In</a></p>
             </div>
         </div>
     )

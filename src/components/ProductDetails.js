@@ -36,9 +36,8 @@ function ProductDetails(props) {
     if (!product) {
         return <div>Product Not Found</div>
     }
-    const addToCartHandler = () => {
-        navigate(`/cart/${productId}?qty=${qty}`)
-    }
+
+    <Link to={`/cart`} className="primary block">Add to Cart</Link>
 
     return <div>
         <Link to='/'>Go Back</Link>
@@ -95,9 +94,8 @@ function ProductDetails(props) {
                                     <li>
                                         <Link to={`/cart`} className="primary block">Add to Cart</Link>
                                         <Routes>
-                                            <Route path={`/cart`} element={<Cart />}></Route>
+                                            <Route path={`/cart`} element={<Cart />} ></Route>
                                         </Routes>
-
                                     </li>
                                 </>
                             )

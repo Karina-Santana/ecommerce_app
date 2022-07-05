@@ -32,7 +32,7 @@ body {
 /* 'grid-area: header' below is refering to the header above*/
 header {
     grid-area: header;
-    background-color: rgb(236, 156, 145);
+    background-color: rgb(244, 206, 201);
 }
 
 main {
@@ -43,7 +43,7 @@ main {
 
 footer {
     grid-area: footer;
-    background-color: rgb(236, 156, 145);
+    background-color: rgb(244, 206, 201);
     color: white;
 }
 
@@ -138,14 +138,36 @@ a.brand {
     align-items: flex-start;
 }
 
+.col-1 {
+    flex: 1 1 35rem;
+    margin-right: 10px;
+}
+
+.col-2 {
+    flex: 2 1 40rem;
+}
+
+.min-30 {
+    min-width: 30rem;
+}
+
 /* image */
 img {
     border-radius: 0.5rem;
 }
 
+img.small {
+    max-width: 5rem;
+    width: 100%;
+}
+
 img.medium {
     max-width: 330px;
     width: 100%;
+}
+
+img.large {
+    width: 90%;
 }
 
 /* card */

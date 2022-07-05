@@ -21,7 +21,7 @@ function Login({ setIsLogged }) {
     const handleLogin = event => {
         event.preventDefault()
         const data = { email, password }
-        console.log(data)
+
         fetch('/api/sessions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

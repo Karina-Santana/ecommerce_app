@@ -1,36 +1,54 @@
 import { useState, useEffect } from 'react'
 import Rating from './Rating'
-import { Routes, Route, Link, useParams } from 'react-router-dom'
+import { Routes, Route, Link, useParams, useNavigate } from 'react-router-dom'
 
 
 function ProductDetails(props) {
 
     const { id: productId } = useParams()
+    const navigate = useNavigate()
 
-
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState({})
     const [qty, setQty] = useState(1)
 
 
     function getProduct(productId) {
         fetch(`/api/products/${productId}`)
             .then(res => res.json())
-            .then(res => setProduct(res))
+            .then(productData => {
+                setProduct({ ...productData, selectedImg: productData.image })
+            })
     }
 
     useEffect(() => getProduct(productId), [])
+
+
+
+    function MouseOver() {
+        setProduct(prevState => {
+            return { ...prevState, selectedImg: prevState.image2 }
+        })
+        console.log('mouseOver')
+    }
+
+    function MouseOut() {
+        setProduct(prevState => {
+            return { ...prevState, selectedImg: prevState.image }
+        })
+        console.log('mouseOut')
+    }
 
     if (!product) {
         return <div>Product Not Found</div>
     }
     const addToCartHandler = () => {
-        props.history.push(`/cart/${productId}?qty=${qty}`)
+        navigate(`/cart/${productId}?qty=${qty}`)
     }
     return <div>
         <Link to='/'>Go Back</Link>
         <div className="row top">
             <div className="col-2">
-                <img className="large" src={product.image} alt={product.title} />
+                <img className="large" src={product.selectedImg} alt={product.title} onMouseOver={MouseOver} onMouseOut={MouseOut} />
             </div>
             <div className="col-1">
                 <ul>

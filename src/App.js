@@ -10,6 +10,7 @@ import Login from './components/Login';
 import LogOut from './components/LogOut';
 
 function App() {
+
   const [isLogged, setIsLogged] = useState(false)
 
   if (isLogged === true) {
@@ -75,38 +76,5 @@ function App() {
 
 }
 
-
-// function App() {
-
-//   return (
-//     <div className="grid-container">
-//       <header className="row">
-//         <div>
-//           <a className="brand" href="/">Le Clé</a>
-//         </div>
-//         <div>
-//           <a href="/cart">My Cart</a>
-//           <Link to="/signup">Sign Up</Link>
-//           <Link to="/login">Log In</Link>
-//         </div>
-//       </header>
-//       <main>
-//         <Routes>
-//           {/* ? is used to not allow to add more product in the cart */}
-//           <Route path='/cart/:id?' element={<Cart />}></Route>
-//           <Route path='/products/:id' element={<ProductDetails />}></Route>
-//           {/* the 'exact' word is making sure that the element Home in the route will run only if the url is '/'  */}
-//           {/* <Route path='/products/:id' onClick={<ProductDetails handleClick={handleClick} />} exact></Route> */}
-//           <Route path='/' element={<Home />} exact></Route>
-//           <Route path="/signup" element={<SignUp />} exact></Route>
-//           <Route path="login" element={<Login />}></Route>
-//         </Routes>
-//       </main>
-//       <footer className="row center">
-//         <a href="https://github.com/Karina-Santana">Created by Karina Santana</a>
-//       </footer>
-//     </div>
-//   );
-// }
 
 export default App;

@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import isLogged from './Login'
 
 function LogOut({ setIsLogged }) {
     let navigate = useNavigate()

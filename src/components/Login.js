@@ -6,8 +6,6 @@ function Login({ setIsLogged }) {
     let navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    // const [login, setLogin] = useState("")
-
 
     const handleEmail = event => {
         setEmail(event.target.value)

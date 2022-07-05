@@ -19,20 +19,19 @@ function App() {
         <div className="grid-container">
           <header className="row">
             <div>
-              <a className="brand" href="/">Le Clé</a>
+              <Link className="brand" to="/">Le Clé</Link>
             </div>
             <div>
-              <a href="/cart">My Cart</a>
-              <a href="/">Log Out</a>
+              <Link to='/cart'>My Cart</Link>
+              <Link to='/logout'>Log Out</Link>
             </div>
           </header>
           <main>
             <Routes>
-              {/* ? is used to not allow to add more product in the cart */}
-              <Route path='/cart/:id?' element={<Cart />}></Route>
-              <Route path='/products/:id' element={<ProductDetails />}></Route>
-              <Route path='/' element={<Home />} exact></Route>
-              <Route path="logout" element={<LogOut />}></Route>
+              <Route path='/cart/*' element={<Cart />}></Route>
+              <Route path='/products/:id/*' element={<ProductDetails />}></Route>
+              <Route path='/' element={<Home />}></Route>
+              <Route path="logout" element={<LogOut setIsLogged={setIsLogged} />}></Route>
             </Routes>
           </main>
           <footer className="row center">
@@ -47,7 +46,7 @@ function App() {
         <div className="grid-container">
           <header className="row">
             <div>
-              <a className="brand" href="/">Le Clé</a>
+              <Link className="brand" to="/">Le Clé</Link>
             </div>
             <div>
               <Link to="/signup">Sign Up</Link>
@@ -57,8 +56,8 @@ function App() {
           <main>
             <Routes>
               {/* ? is used to not allow to add more product in the cart */}
-              <Route path='/cart/:id?' element={<Cart />}></Route>
-              <Route path='/products/:id' element={<ProductDetails />}></Route>
+              <Route path='/cart/:id/*' element={<Cart />}></Route>
+              <Route path='/products/:id/*' element={<ProductDetails />}></Route>
               {/* the 'exact' word is making sure that the element Home in the route will run only if the url is '/'  */}
               {/* <Route path='/products/:id' onClick={<ProductDetails handleClick={handleClick} />} exact></Route> */}
               <Route path='/' element={<Home />} exact></Route>

@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
 import Rating from './Rating'
 import { Routes, Route, Link, useParams, useNavigate } from 'react-router-dom'
-
+import isLogged from '../App'
+import Cart from './Cart'
 
 function ProductDetails(props) {
 
     const { id: productId } = useParams()
     const navigate = useNavigate()
-
     const [product, setProduct] = useState({})
     const [qty, setQty] = useState(1)
-
 
     function getProduct(productId) {
         fetch(`/api/products/${productId}`)
@@ -22,20 +21,16 @@ function ProductDetails(props) {
 
     useEffect(() => getProduct(productId), [])
 
-
-
     function MouseOver() {
         setProduct(prevState => {
             return { ...prevState, selectedImg: prevState.image2 }
         })
-        console.log('mouseOver')
     }
 
     function MouseOut() {
         setProduct(prevState => {
             return { ...prevState, selectedImg: prevState.image }
         })
-        console.log('mouseOut')
     }
 
     if (!product) {
@@ -44,6 +39,7 @@ function ProductDetails(props) {
     const addToCartHandler = () => {
         navigate(`/cart/${productId}?qty=${qty}`)
     }
+
     return <div>
         <Link to='/'>Go Back</Link>
         <div className="row top">
@@ -97,7 +93,11 @@ function ProductDetails(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <button onClick={addToCartHandler} className="primary block">Add to Cart</button>
+                                        <Link to={`/cart`} className="primary block">Add to Cart</Link>
+                                        <Routes>
+                                            <Route path={`/cart`} element={<Cart />}></Route>
+                                        </Routes>
+
                                     </li>
                                 </>
                             )

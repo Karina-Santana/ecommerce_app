@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Rating from './Rating'
 
 function AllProducts({ allProducts }) {
@@ -7,13 +8,13 @@ function AllProducts({ allProducts }) {
                 allProducts.map((product, index) => (
                     <div className="row center" key={index}>
                         <div className="card">
-                            <a href={`products/${product.id}`}>
+                            <Link to={`products/${product.id}`}>
                                 <img className="medium" src={product.image} alt={product.title} />
-                            </a>
+                            </Link>
                             <div className="card-body">
-                                <a href={`products/${product.id}`}>
+                                <Link to={`products/${product.id}`}>
                                     <h2>{product.title}</h2>
-                                </a>
+                                </Link>
                                 <Rating rating={product.rating} num_reviews={product.num_reviews} />
                                 <div className="price">${product.price}</div>
                             </div>

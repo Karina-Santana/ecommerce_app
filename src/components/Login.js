@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function Login({ setIsLogged }) {
@@ -42,7 +42,8 @@ function Login({ setIsLogged }) {
                 <input type="password" required />
             </form>
 
-            <button className='login-btn' type='submit' onClick={handleLogin}>Log In</button>
+            <Link to='/' className='login-btn' type='submit' onClick={handleLogin}>Log In</Link>
+            {/* <button className='login-btn' type='submit' onClick={handleLogin}>Log In</button> */}
             <p>Are you not registered yet? <a href="/signup">Click Here To Sign Up</a></p>
 
         </div>

@@ -12,11 +12,8 @@ The user can sign up, log in, click on a product and see more information about 
 React, JavaScript, Express, CSS
 
 ## Plan
-I spent my first day planning what features I'd like to have and setting up the minimum structure of the project. This included setting up the databases for users, products and carts using SQL and then using Node.js and Express to set an API using both front-end and back-end architecture. This allowed me to have a starting point for where I wanted to add additional features.
+I spent my first day planning what features I'd like to have and setting up the minimum structure of the project. This included setting up the databases for users, products and carts using SQL and then using Node.js and Express to set an API using both front-end and back-end architecture. 
 
-We then set up a database for the itineraries and allowed a travel_id to be stored in that table so that the individual itinerary is to be stored for that specific trip in the backend and only render those itineraries for that trip on the front-end. Additional features were included to log in functionality as well to display error messages when a user's password is incorrect.
-
-We all decided to leave CSS until the last day given that all the above features would affect the styling of the 'pages' when added. The trips are displayed in a grid while the itineraries are displayed in a xx. All front-end features that have an onClick function such as the Show Trips and Logout have a hover over icon so that the user knows something will happen when they click on these features.
 
 ## Unsolved Issues and Future Improvements
 Fix cart feature

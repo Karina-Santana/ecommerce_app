@@ -56,7 +56,7 @@ function App() {
           <main>
             <Routes>
               {/* ? is used to not allow to add more product in the cart */}
-              <Route path='/cart/:id/*' element={<Cart />}></Route>
+              <Route path='/cart/:id?' component={<Cart />}></Route>
               <Route path='/products/:id/*' element={<ProductDetails />}></Route>
               {/* the 'exact' word is making sure that the element Home in the route will run only if the url is '/'  */}
               {/* <Route path='/products/:id' onClick={<ProductDetails handleClick={handleClick} />} exact></Route> */}

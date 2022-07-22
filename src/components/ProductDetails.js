@@ -21,6 +21,10 @@ function ProductDetails(props) {
 
     useEffect(() => getProduct(productId), [])
 
+    const addToCartHandler = () => {
+        navigate(`/cart/${productId}?qty=${qty}`)
+    }
+
     function MouseOver() {
         setProduct(prevState => {
             return { ...prevState, selectedImg: prevState.image2 }
@@ -37,7 +41,7 @@ function ProductDetails(props) {
         return <div>Product Not Found</div>
     }
 
-    <Link to={`/cart`} className="primary block">Add to Cart</Link>
+    // <Link to={`/cart`} className="primary block">Add to Cart</Link>
 
     return <div>
         <Link to='/'>Go Back</Link>
@@ -92,10 +96,7 @@ function ProductDetails(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <Link to={`/cart`} className="primary block">Add to Cart</Link>
-                                        <Routes>
-                                            <Route path={`/cart`} element={<Cart />} ></Route>
-                                        </Routes>
+                                        <button onClick={addToCartHandler} className="primary block">Add to Cart</button>
                                     </li>
                                 </>
                             )
